@@ -74,7 +74,6 @@ class AlunoService
             ];
         } catch(Exception $err) {
             DB::rollBack();
-            dd($err->getMessage());
             return [
                 'status' => false,
                 'erro' => $err->getMessage()
@@ -85,7 +84,7 @@ class AlunoService
     public static function destroy($id)
     {
         try{
-            $aluno = Aluno::finsOrFail($id);
+            $aluno = Aluno::findOrFail($id);
             $aluno->curso()->detach();
             $aluno->delete();
             return[
