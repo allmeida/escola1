@@ -12,7 +12,7 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 2',
+    'title' => 'Escola',
 
     'title_prefix' => '',
 
@@ -29,7 +29,7 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
+    'logo' => '<b>Escola</b>',
 
     'logo_mini' => '<b>A</b>LT',
 
@@ -127,7 +127,7 @@ return [
     */
 
     'menu' => [
-       
+
         [
             'text'        => 'Aluno',
             'url'         => 'aluno',
@@ -283,6 +283,6 @@ return [
                 ],
             ],
         ],
-        
+
     ],
 ];

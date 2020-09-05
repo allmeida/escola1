@@ -19,7 +19,7 @@ class UsersTableSeeder extends Seeder
             ],
             [
                 'name' =>'Administrador',
-                'password' => Hash::make('admin')
+                'password' => Hash::make('allmeida')
             ]
         );
     }
