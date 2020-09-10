@@ -26,7 +26,6 @@ class AlunoService
                 'aluno' => $aluno
             ];
         } catch (Exception $err) {
-            dd($err->getMessage());
             DB::rollBack();
             return [
                 'status' => false,
@@ -42,7 +41,7 @@ class AlunoService
              $curso  = Curso::all()->pluck('nome','id');
              return[
                  'status' => true,
-                 'aluno' => $aluno, 
+                 'aluno' => $aluno,
                  'curso' => $curso
              ];
          }catch(Exception $err)
@@ -51,7 +50,7 @@ class AlunoService
                  'status' => false,
                  'erro' => $err->getMessage()
              ];
-         }        
+         }
     }
 
     public static function update($request, $id)
@@ -106,6 +105,6 @@ class AlunoService
         $arquivo->move(public_path() . '/imagens/', $imagem);
 
         return $imagem;
-        
+
     }
 }

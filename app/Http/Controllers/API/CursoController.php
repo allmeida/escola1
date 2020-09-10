@@ -35,12 +35,12 @@ class CursoController extends Controller
         $curso = CursoService::findOrfail($id);
         $curso->fill($request>all());
         $curso->save();
-        return response()->json($aluno);
+        return response()->json($curso);
     }
 
     public function destroy($id)
     {
-        $curso = AlunoService::findOrfail($id);
+        $curso = CursoService::findOrfail($id);
         $curso->delete();
         return response()->json(['message'=>'Removido']);
     }
