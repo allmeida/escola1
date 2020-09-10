@@ -30,7 +30,7 @@ class AlunoDataTable extends DataTable
                 );
                 $acoes .= FormFacade::button(
                     "Excluir",
-                    ['class' => 
+                    ['class' =>
                         'btn btn-sm btn-danger ml-1',
                         'onclick' =>"excluir('" . route('aluno.destroy', $aluno) ."')"
                         ]
@@ -83,9 +83,6 @@ class AlunoDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            Column::computed('action')
-                  ->exportable(false)
-                  ->printable(false),
             Column::make('id'),
             Column::make('nome'),
             Column::make('cpf'),
@@ -93,7 +90,10 @@ class AlunoDataTable extends DataTable
             Column::make('imagem'),
             Column::make('curso_id'),
             Column::make('created_at'),
-            
+            Column::computed('action')
+                    ->exportable(false)
+                    ->title('Ações')
+                    ->printable(false),
         ];
     }
 
