@@ -3,6 +3,7 @@
 namespace App\DataTables;
 
 use App\Models\Aluno;
+use App\Models\Curso;
 use Collective\Html\FormFacade;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
@@ -37,6 +38,9 @@ class AlunoDataTable extends DataTable
                 );
                 return $acoes;
 
+            })
+            ->editColumn('curso_id', function($aluno) {
+                return Curso::find($aluno->curso_id)->nome;
             })
             ->editColumn('imagem', function ($aluno) {
                 return '<img style="height: 50px;" src="' . asset('imagens/' . $aluno->imagem) . '" />';
@@ -88,8 +92,8 @@ class AlunoDataTable extends DataTable
             Column::make('cpf'),
             Column::make('data_nascimento'),
             Column::make('imagem'),
-            Column::make('curso_id'),
-            Column::make('created_at'),
+            Column::make('curso_id')
+            ->title('Curso'),
             Column::computed('action')
                     ->exportable(false)
                     ->title('Ações')
