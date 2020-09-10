@@ -7,3 +7,4 @@ Route::get('/home', 'HomeController@index')->name('home');
     });
 
 Route::resource('aluno', 'AlunoController');
+Route::resource('curso', 'CursoController');
