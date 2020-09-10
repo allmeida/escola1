@@ -2,63 +2,47 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Models\Aluno;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Http\Request\AlunoRequest;
+use App\Http\Service\AlunoService;
 
 class AlunoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        return Aluno::all();
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $aluno = AlunoService::store($request->all());
+
+        if ($aluno['status']) {
+            return response()->json($aluno, 200);
+        }
+
+        return response()->json($aluno, 400);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
-        //
+        return Aluno::findOrfail($id);
+        //return response()->json($aluno);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-        //
+        $aluno = AlunoService::findOrfail($id);
+        $aluno->fill($request>all());
+        $aluno->save();
+        return response()->json($aluno);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        //
+        $aluno = AlunoService::findOrfail($id);
+        $aluno->delete();
+        return response()->json(['message'=>'Removido']);
     }
 }
