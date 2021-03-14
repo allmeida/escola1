@@ -34,7 +34,7 @@ class ProfessorDataTable extends DataTable
                         'class' => 'btn btn-sm btn-danger',
                         'onclick' => "excluir('" .route('professor.destroy', $professor) ."')"
                     ]
-                );    
+                );
                 return $acoes;
             })
             ->editColumn('date', function ($professor){
@@ -67,9 +67,9 @@ class ProfessorDataTable extends DataTable
                     ->dom('Bfrtip')
                     ->orderBy(1)
                     ->buttons(
-                        Button::make('create')->text('Adicionar Professor'),
-                        Button::make('export')->text('Exportar'),
-                        Button::make('print')->text('Imprimir')
+                        Button::make('create')->text('Adicionar Professor <i class="fas fa-plus"></i>')->addClass("bold"),
+                        Button::make('export')->text('Exportar <i class="fas fa-download"></i>')->addClass("bold"),
+                        Button::make('print')->text('Imprimir <i class="fas fa-print"></i>')->addClass("bold")
                     )
                     ->parameters([
                         'language' => ['url' => '//cdn.datatables.net/plug-ins/1.10.20/i18n/Portuguese-Brasil.json']
