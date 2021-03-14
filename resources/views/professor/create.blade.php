@@ -3,14 +3,15 @@
 @section('title', 'Formulário')
 
 @section('content_header')
-    <div class="card-header">
-        <h3 class="card-title">Formulário de Professor</h3>
-    </div>
+
 @stop
 
 @section('content')
-    <div class="card">
-        <div class="card-body">
+    <div class="box box-primary">
+        <div class="box-header">
+            <h3 class="box-title">Formulário de Professor</h3>
+        </div>
+        <div class="box-body">
             @if (isset($professor))
                 {!! Form::model($professor, ['route' => ['professor.update', $professor], 'method' => 'put']) !!}
             @else
@@ -27,12 +28,15 @@
                     @error('formacao') <span class="text-danger">{{ $message }}</span> @enderror
                 </div>
                 <div class="form-group">
-                    {!! Form::label('date', 'Data Nascimento') !!}
+                    {!! Form::label('date', 'Data de Nascimento') !!}
                     {!! Form::date('date', null, ['class' => 'form-control']) !!}
                     @error('date') <span class="text-danger">{{ $message }}</span> @enderror
                 </div>
 
-                {!! Form::submit('Salvar', ['class' => 'btn btn-success']) !!}
+                <div class="pull-right">
+                    <a href="{{ route("professor.index") }}" class="btn btn-default">Cancelar <i class="fas fa-ban"></i></a>
+                    {!! Form::button('Salvar <i class="fas fa-save"></i>', ['class' => 'btn btn-primary', 'type' => "submit"]) !!}
+                </div>
             {!! Form::close() !!}
         </div>
     </div>
